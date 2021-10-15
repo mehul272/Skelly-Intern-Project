@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/header.css">
+
+    <title>Welcome to INTERN</title>
+</head>
+
+<body>
+
+    <header>
+        <img class="logo" src="images/logo1.JPG" alt="logo">
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <a class="btn btn-light btn-lg" href="/" role="button">HomePage</a>
+        </ul>
+    </header>
+
+
+    <div class="student"><br><br>
+
+        <div class="container">
+
+            <h1 class="my-h1">
+                College DATABASE
+            </h1>
+            <a href="/addcollege" class="btn btn-sm btn-warning my-button-design">Add College</a>
+            <br>
+
+
+            <table class="table table-dark table-striped my-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Year Founded</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Total Students</th>
+                        <th>Courses</th>
+                        <th>VIEW STUDENTS</th>
+                        <th>ADD STUDENTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(function(user){ %>
+                        <tr>
+                            <td>
+                                <%= user.college_id %>
+                            </td>
+                            <td>
+                                <%= user.college_name %>
+                            </td>
+                            <td>
+                                <%= user.year_founded %>
+                            </td>
+                            <td>
+                                <%= user.city %>
+                            </td>
+                            <td>
+                                <%= user.state %>
+                            </td>
+                            <td>
+                                <%= user.country %>
+                            </td>
+                            <td>
+                                <a href="total_student/<%= user.college_id %>" class="btn btn-sm btn-success">Total
+                                    Students</a>
+                            </td>
+                            <td>
+                                <%= user.courses %>
+                            </td>
+                            <td>
+                                <a href="view/<%= user.college_id %>" class="btn btn-sm btn-danger">Expand-></a>
+                            </td>
+                            <td>
+                                <a href="add/<%= user.college_id %>" class="btn btn-sm btn-primary">Add Students</a>
+                            </td>
+
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <%- include('partials/footer') %>

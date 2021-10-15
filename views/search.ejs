@@ -1,0 +1,73 @@
+<%- include('partials/header2') %>
+
+    <style>
+        .chart_container {
+            width: 50%;
+            /* margin: 100px; */
+            /* height: 260px; */
+            padding: 200px;
+        }
+    </style>
+
+    <canvas id="myChart" class="chart_container" width="300" height="100"></canvas>
+
+
+
+    <script>
+
+        let states = '<%= states %>'
+        let sums = '<%= sums %>'
+
+        console.log(states);
+        // console.log(sums)
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        ctx.height = 130;
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: states.split(","),
+                datasets: [{
+                    label: '# of Votes',
+                    data: sums.split(","),
+                    backgroundColor: [
+                        "rgba(0,128,128)",
+                        "rgba(255,20,147)",
+                        "rgba(0,0,128)",
+                        "rgba(0,128,0)",
+                        "rgba(128,0,0)",
+                        "rgba(255,0,0)",
+                        "rgba(218,112,214)",
+                        "rgba(70,130,180)"
+
+                    ],
+                    hoverBackgroundColor: [
+                        "rgba(0,128,128)",
+                        "rgba(255,20,147)",
+                        "rgba(0,0,128)",
+                        "rgba(0,128,0)",
+                        "rgba(128,0,0)",
+                        "rgba(255,0,0)",
+                        "rgba(218,112,214)",
+                        "rgba(70,130,180)"
+                    ],
+
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 500,
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <%- include('partials/footer') %>
